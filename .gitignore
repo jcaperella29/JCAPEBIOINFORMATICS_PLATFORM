@@ -1,0 +1,24 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Nextflow generated files
+.nextflow/
+.nextflow.*
+work/
+results/
+
+# Python generated files
+__pycache__/
+*.py[cod]
+
+# Runtime outputs
+JOBS/
+reports/
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

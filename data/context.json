@@ -1,0 +1,26 @@
+{
+  "phenotype": "Gene-expression response to dexamethasone treatment compared with untreated control in primary human airway smooth muscle cells.",
+  "organism": "Homo sapiens",
+  "assay": "bulk RNA-seq",
+  "tissue": "human airway smooth muscle",
+  "cell_type": "primary human airway smooth muscle cells",
+  "perturbation": "1 micromolar dexamethasone treatment compared with untreated control",
+  "timepoint": "18 hours",
+  "study_goal": "Identify transcriptional programs and enriched pathways altered by glucocorticoid treatment, prioritize central genes and pathways using network analysis, distinguish plausible dexamethasone-responsive biology from artifacts or nonspecific signals, and recommend follow-up validation experiments.",
+  "experimental_design": "Paired treatment design using four primary human airway smooth muscle cell lines. Each cell line contributes one untreated sample and one dexamethasone-treated sample, for eight total RNA-seq samples.",
+  "comparison": "dexamethasone-treated versus untreated",
+  "treatment_group": "trt",
+  "reference_group": "untrt",
+  "known_covariates": [
+    "cell line / donor identity"
+  ],
+  "biological_background": "Dexamethasone is a synthetic glucocorticoid with anti-inflammatory activity. The analysis should focus on glucocorticoid-responsive transcription, inflammatory signaling, extracellular-matrix or contractile programs, and other airway smooth-muscle responses supported by the enrichment evidence.",
+  "interpretation_constraints": [
+    "Treat enrichment, diffusion, follow-up, and consensus scores as prioritization measures rather than new p-values.",
+    "Use the original adjusted p-values as the statistical evidence.",
+    "Do not assume pathway enrichment proves pathway activation or causal mechanism.",
+    "Account for the paired cell-line design when discussing biological variability.",
+    "Separate direct evidence from hypotheses and recommended follow-up experiments."
+  ],
+  "notes": "This is the Bioconductor airway demonstration dataset derived from the Himes et al. human airway smooth muscle dexamethasone experiment."
+}

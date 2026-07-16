@@ -1,0 +1,20 @@
+{
+  "counts": "data/airway_counts.csv",
+  "phenotype": "data/airway_phenotype.csv",
+  "phenotype_column": "dex",
+  "context_json": "data/context.json",
+  "outdir": "results",
+  "rnaseq_url": "http://127.0.0.1:8000",
+  "network_url": "http://127.0.0.1:8001",
+  "llm_url": "http://127.0.0.1:8002",
+  "species": "hsapiens",
+  "reference_group": "untrt",
+  "contrast": "",
+  "fdr": 0.05,
+  "logfc_cutoff": 1.0,
+  "enrich_backend": "auto",
+  "network_ranking_mode": "balanced",
+  "network_projection_method": "jaccard",
+  "llm_mode": "pretriage",
+  "make_pdf": true
+}
