@@ -1,0 +1,19 @@
+"gene","replicate","mixscape_class","Freq","percent"
+"IFNGR2","rep1","IFNGR2 KO",96,0.96
+"NT","rep1","IFNGR2 KO",0,0
+"IFNGR2","rep2","IFNGR2 KO",98,0.98
+"NT","rep2","IFNGR2 KO",0,0
+"IFNGR2","rep3","IFNGR2 KO",94,0.94
+"NT","rep3","IFNGR2 KO",0,0
+"IFNGR2","rep1","IFNGR2 NP",4,0.04
+"NT","rep1","IFNGR2 NP",0,0
+"IFNGR2","rep2","IFNGR2 NP",2,0.02
+"NT","rep2","IFNGR2 NP",0,0
+"IFNGR2","rep3","IFNGR2 NP",6,0.06
+"NT","rep3","IFNGR2 NP",0,0
+"IFNGR2","rep1","NT",0,0
+"NT","rep1","NT",100,1
+"IFNGR2","rep2","NT",0,0
+"NT","rep2","NT",100,1
+"IFNGR2","rep3","NT",0,0
+"NT","rep3","NT",100,1
