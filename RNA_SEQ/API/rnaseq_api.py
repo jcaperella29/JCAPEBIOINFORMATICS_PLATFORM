@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-# RNA_SEQ_API_V2_V6_COMPATIBLE_2026_07_02
 
 import json
 import os
@@ -18,15 +17,20 @@ from pydantic import BaseModel
 
 
 APP_ROOT = Path(os.getenv("APP_ROOT", "/work")).resolve()
-CLI_DIR = Path(os.getenv("CLI_DIR", str(APP_ROOT / "CLI"))).resolve()
+CLI_DIR = Path(
+    os.getenv(
+        "CLI_DIR",
+        str(APP_ROOT / "CLI" / "RNA_seq_engine_modular_v7_1"),
+    )
+).resolve()
 JOB_ROOT = Path(os.getenv("JOB_ROOT", str(APP_ROOT / "JOBS"))).resolve()
 
 JOB_ROOT.mkdir(parents=True, exist_ok=True)
 
 app = FastAPI(
     title="JCAP RNA-seq API",
-    version="0.2.0",
-    description="FastAPI wrapper around the JCAP RNA-seq R CLI v6.",
+    version="0.3.0",
+    description="FastAPI wrapper around the modular JCAP RNA-seq engine v7.1.",
 )
 
 
@@ -87,7 +91,7 @@ def write_status(job_id: str, payload: dict) -> None:
 
 
 def resolve_cli_script(script_name: str) -> Path:
-    allowed = {"rnaseq_cli.R", "rnaseq_cli_hardened.R", "rnaseq_cli_v6_api_manifest_cv_zip.R"}
+    allowed = {"rnaseq_cli.R"}
     if script_name not in allowed:
         raise HTTPException(status_code=400, detail=f"cli_script must be one of: {sorted(allowed)}")
 
@@ -205,7 +209,7 @@ def run_rnaseq_job(
         with stdout_path.open("w") as stdout, stderr_path.open("w") as stderr:
             proc = subprocess.run(
                 cmd,
-                cwd=str(APP_ROOT),
+                cwd=str(cli_path.parent),
                 stdout=stdout,
                 stderr=stderr,
                 text=True,
@@ -261,8 +265,8 @@ def health() -> dict:
         "app_root": str(APP_ROOT),
         "cli_dir": str(CLI_DIR),
         "job_root": str(JOB_ROOT),
-        "api_version": "0.2.0",
-        "expected_cli": "rnaseq_cli.R v6-compatible flags",
+        "api_version": "0.3.0",
+        "expected_cli": "modular rnaseq_cli.R v7.1",
         "available_cli_scripts": [p.name for p in CLI_DIR.glob("*.R")] if CLI_DIR.exists() else [],
     }
 
@@ -309,9 +313,6 @@ async def create_rnaseq_job(
         raise HTTPException(status_code=400, detail="logfc_cutoff must be >= 0")
     if curve_n_min < 2 or curve_n_max < curve_n_min:
         raise HTTPException(status_code=400, detail="curve_n_min must be >= 2 and curve_n_max must be >= curve_n_min")
-    if contrast and reference_group:
-        raise HTTPException(status_code=400, detail="Use either contrast or reference_group, not both")
-
     job_id = uuid.uuid4().hex
     jd = job_dir(job_id)
     input_dir = jd / "inputs"
@@ -472,3 +473,4 @@ def download_rnaseq_job_zip(job_id: str) -> FileResponse:
                 zf.write(path, arcname=str(path.relative_to(jd)))
 
     return FileResponse(zip_path, filename=f"{job_id}_results.zip", media_type="application/zip")
+
