@@ -1,0 +1,537 @@
+{
+  "analysis_type": "cell_state",
+  "assay": "perturbseq",
+  "annotation_mode": "provided",
+  "state_column": "lineage_state",
+  "group_column": "target",
+  "n_cells": 4500,
+  "states": [
+    "Car1",
+    "Cd74",
+    "Fcnb",
+    "Fcrla",
+    "Gstm1",
+    "Hba-a2",
+    "Ltf",
+    "Ly86",
+    "Pf4",
+    "Prg2",
+    "Prss34",
+    "Vpreb1",
+    "unassigned"
+  ],
+  "overall_state_summary": [
+    {
+      "state": "Car1",
+      "n_cells": 1786,
+      "fraction": 0.3968888888888889
+    },
+    {
+      "state": "Hba-a2",
+      "n_cells": 1409,
+      "fraction": 0.3131111111111111
+    },
+    {
+      "state": "Gstm1",
+      "n_cells": 615,
+      "fraction": 0.13666666666666666
+    },
+    {
+      "state": "unassigned",
+      "n_cells": 485,
+      "fraction": 0.10777777777777778
+    },
+    {
+      "state": "Vpreb1",
+      "n_cells": 73,
+      "fraction": 0.01622222222222222
+    },
+    {
+      "state": "Fcnb",
+      "n_cells": 64,
+      "fraction": 0.014222222222222223
+    },
+    {
+      "state": "Ly86",
+      "n_cells": 23,
+      "fraction": 0.005111111111111111
+    },
+    {
+      "state": "Pf4",
+      "n_cells": 12,
+      "fraction": 0.0026666666666666666
+    },
+    {
+      "state": "Fcrla",
+      "n_cells": 12,
+      "fraction": 0.0026666666666666666
+    },
+    {
+      "state": "Prss34",
+      "n_cells": 7,
+      "fraction": 0.0015555555555555555
+    },
+    {
+      "state": "Ltf",
+      "n_cells": 6,
+      "fraction": 0.0013333333333333333
+    },
+    {
+      "state": "Prg2",
+      "n_cells": 6,
+      "fraction": 0.0013333333333333333
+    },
+    {
+      "state": "Cd74",
+      "n_cells": 2,
+      "fraction": 0.00044444444444444447
+    }
+  ],
+  "group_state_summary": [
+    {
+      "group": "CTRL",
+      "state": "Car1",
+      "n_cells": 655,
+      "fraction_within_group": 0.43666666666666665
+    },
+    {
+      "group": "CTRL",
+      "state": "Hba-a2",
+      "n_cells": 532,
+      "fraction_within_group": 0.3546666666666667
+    },
+    {
+      "group": "CTRL",
+      "state": "Gstm1",
+      "n_cells": 163,
+      "fraction_within_group": 0.10866666666666666
+    },
+    {
+      "group": "CTRL",
+      "state": "unassigned",
+      "n_cells": 107,
+      "fraction_within_group": 0.07133333333333333
+    },
+    {
+      "group": "CTRL",
+      "state": "Fcnb",
+      "n_cells": 22,
+      "fraction_within_group": 0.014666666666666666
+    },
+    {
+      "group": "CTRL",
+      "state": "Vpreb1",
+      "n_cells": 11,
+      "fraction_within_group": 0.007333333333333333
+    },
+    {
+      "group": "CTRL",
+      "state": "Ly86",
+      "n_cells": 4,
+      "fraction_within_group": 0.0026666666666666666
+    },
+    {
+      "group": "CTRL",
+      "state": "Fcrla",
+      "n_cells": 2,
+      "fraction_within_group": 0.0013333333333333333
+    },
+    {
+      "group": "CTRL",
+      "state": "Prss34",
+      "n_cells": 2,
+      "fraction_within_group": 0.0013333333333333333
+    },
+    {
+      "group": "CTRL",
+      "state": "Cd74",
+      "n_cells": 1,
+      "fraction_within_group": 0.0006666666666666666
+    },
+    {
+      "group": "CTRL",
+      "state": "Pf4",
+      "n_cells": 1,
+      "fraction_within_group": 0.0006666666666666666
+    },
+    {
+      "group": "Cebpa",
+      "state": "Car1",
+      "n_cells": 239,
+      "fraction_within_group": 0.478
+    },
+    {
+      "group": "Cebpa",
+      "state": "Hba-a2",
+      "n_cells": 232,
+      "fraction_within_group": 0.464
+    },
+    {
+      "group": "Cebpa",
+      "state": "Gstm1",
+      "n_cells": 15,
+      "fraction_within_group": 0.03
+    },
+    {
+      "group": "Cebpa",
+      "state": "unassigned",
+      "n_cells": 10,
+      "fraction_within_group": 0.02
+    },
+    {
+      "group": "Cebpa",
+      "state": "Vpreb1",
+      "n_cells": 2,
+      "fraction_within_group": 0.004
+    },
+    {
+      "group": "Cebpa",
+      "state": "Ly86",
+      "n_cells": 1,
+      "fraction_within_group": 0.002
+    },
+    {
+      "group": "Cebpa",
+      "state": "Pf4",
+      "n_cells": 1,
+      "fraction_within_group": 0.002
+    },
+    {
+      "group": "Csf1r",
+      "state": "Car1",
+      "n_cells": 192,
+      "fraction_within_group": 0.384
+    },
+    {
+      "group": "Csf1r",
+      "state": "Hba-a2",
+      "n_cells": 147,
+      "fraction_within_group": 0.294
+    },
+    {
+      "group": "Csf1r",
+      "state": "Gstm1",
+      "n_cells": 72,
+      "fraction_within_group": 0.144
+    },
+    {
+      "group": "Csf1r",
+      "state": "unassigned",
+      "n_cells": 51,
+      "fraction_within_group": 0.102
+    },
+    {
+      "group": "Csf1r",
+      "state": "Vpreb1",
+      "n_cells": 21,
+      "fraction_within_group": 0.042
+    },
+    {
+      "group": "Csf1r",
+      "state": "Fcnb",
+      "n_cells": 7,
+      "fraction_within_group": 0.014
+    },
+    {
+      "group": "Csf1r",
+      "state": "Fcrla",
+      "n_cells": 3,
+      "fraction_within_group": 0.006
+    },
+    {
+      "group": "Csf1r",
+      "state": "Ly86",
+      "n_cells": 3,
+      "fraction_within_group": 0.006
+    },
+    {
+      "group": "Csf1r",
+      "state": "Pf4",
+      "n_cells": 2,
+      "fraction_within_group": 0.004
+    },
+    {
+      "group": "Csf1r",
+      "state": "Ltf",
+      "n_cells": 1,
+      "fraction_within_group": 0.002
+    },
+    {
+      "group": "Csf1r",
+      "state": "Prss34",
+      "n_cells": 1,
+      "fraction_within_group": 0.002
+    },
+    {
+      "group": "Fcgr3",
+      "state": "Car1",
+      "n_cells": 159,
+      "fraction_within_group": 0.318
+    },
+    {
+      "group": "Fcgr3",
+      "state": "unassigned",
+      "n_cells": 117,
+      "fraction_within_group": 0.234
+    },
+    {
+      "group": "Fcgr3",
+      "state": "Hba-a2",
+      "n_cells": 111,
+      "fraction_within_group": 0.222
+    },
+    {
+      "group": "Fcgr3",
+      "state": "Gstm1",
+      "n_cells": 72,
+      "fraction_within_group": 0.144
+    },
+    {
+      "group": "Fcgr3",
+      "state": "Vpreb1",
+      "n_cells": 14,
+      "fraction_within_group": 0.028
+    },
+    {
+      "group": "Fcgr3",
+      "state": "Fcnb",
+      "n_cells": 9,
+      "fraction_within_group": 0.018
+    },
+    {
+      "group": "Fcgr3",
+      "state": "Ly86",
+      "n_cells": 7,
+      "fraction_within_group": 0.014
+    },
+    {
+      "group": "Fcgr3",
+      "state": "Pf4",
+      "n_cells": 6,
+      "fraction_within_group": 0.012
+    },
+    {
+      "group": "Fcgr3",
+      "state": "Prg2",
+      "n_cells": 1,
+      "fraction_within_group": 0.002
+    },
+    {
+      "group": "Fcgr3",
+      "state": "Prss34",
+      "n_cells": 1,
+      "fraction_within_group": 0.002
+    },
+    {
+      "group": "Fcgr3",
+      "state": "Cd74",
+      "n_cells": 1,
+      "fraction_within_group": 0.002
+    },
+    {
+      "group": "Fcgr3",
+      "state": "Fcrla",
+      "n_cells": 1,
+      "fraction_within_group": 0.002
+    },
+    {
+      "group": "Fcgr3",
+      "state": "Ltf",
+      "n_cells": 1,
+      "fraction_within_group": 0.002
+    },
+    {
+      "group": "Flt3",
+      "state": "Car1",
+      "n_cells": 169,
+      "fraction_within_group": 0.338
+    },
+    {
+      "group": "Flt3",
+      "state": "Gstm1",
+      "n_cells": 115,
+      "fraction_within_group": 0.23
+    },
+    {
+      "group": "Flt3",
+      "state": "Hba-a2",
+      "n_cells": 107,
+      "fraction_within_group": 0.214
+    },
+    {
+      "group": "Flt3",
+      "state": "unassigned",
+      "n_cells": 86,
+      "fraction_within_group": 0.172
+    },
+    {
+      "group": "Flt3",
+      "state": "Fcnb",
+      "n_cells": 7,
+      "fraction_within_group": 0.014
+    },
+    {
+      "group": "Flt3",
+      "state": "Ly86",
+      "n_cells": 5,
+      "fraction_within_group": 0.01
+    },
+    {
+      "group": "Flt3",
+      "state": "Vpreb1",
+      "n_cells": 3,
+      "fraction_within_group": 0.006
+    },
+    {
+      "group": "Flt3",
+      "state": "Fcrla",
+      "n_cells": 3,
+      "fraction_within_group": 0.006
+    },
+    {
+      "group": "Flt3",
+      "state": "Prss34",
+      "n_cells": 2,
+      "fraction_within_group": 0.004
+    },
+    {
+      "group": "Flt3",
+      "state": "Prg2",
+      "n_cells": 1,
+      "fraction_within_group": 0.002
+    },
+    {
+      "group": "Flt3",
+      "state": "Ltf",
+      "n_cells": 1,
+      "fraction_within_group": 0.002
+    },
+    {
+      "group": "Flt3",
+      "state": "Pf4",
+      "n_cells": 1,
+      "fraction_within_group": 0.002
+    },
+    {
+      "group": "Irf8",
+      "state": "Car1",
+      "n_cells": 197,
+      "fraction_within_group": 0.394
+    },
+    {
+      "group": "Irf8",
+      "state": "Hba-a2",
+      "n_cells": 137,
+      "fraction_within_group": 0.274
+    },
+    {
+      "group": "Irf8",
+      "state": "Gstm1",
+      "n_cells": 72,
+      "fraction_within_group": 0.144
+    },
+    {
+      "group": "Irf8",
+      "state": "unassigned",
+      "n_cells": 48,
+      "fraction_within_group": 0.096
+    },
+    {
+      "group": "Irf8",
+      "state": "Vpreb1",
+      "n_cells": 20,
+      "fraction_within_group": 0.04
+    },
+    {
+      "group": "Irf8",
+      "state": "Fcnb",
+      "n_cells": 15,
+      "fraction_within_group": 0.03
+    },
+    {
+      "group": "Irf8",
+      "state": "Fcrla",
+      "n_cells": 3,
+      "fraction_within_group": 0.006
+    },
+    {
+      "group": "Irf8",
+      "state": "Ltf",
+      "n_cells": 3,
+      "fraction_within_group": 0.006
+    },
+    {
+      "group": "Irf8",
+      "state": "Prg2",
+      "n_cells": 2,
+      "fraction_within_group": 0.004
+    },
+    {
+      "group": "Irf8",
+      "state": "Ly86",
+      "n_cells": 2,
+      "fraction_within_group": 0.004
+    },
+    {
+      "group": "Irf8",
+      "state": "Prss34",
+      "n_cells": 1,
+      "fraction_within_group": 0.002
+    },
+    {
+      "group": "Klf4",
+      "state": "Car1",
+      "n_cells": 175,
+      "fraction_within_group": 0.35
+    },
+    {
+      "group": "Klf4",
+      "state": "Hba-a2",
+      "n_cells": 143,
+      "fraction_within_group": 0.286
+    },
+    {
+      "group": "Klf4",
+      "state": "Gstm1",
+      "n_cells": 106,
+      "fraction_within_group": 0.212
+    },
+    {
+      "group": "Klf4",
+      "state": "unassigned",
+      "n_cells": 66,
+      "fraction_within_group": 0.132
+    },
+    {
+      "group": "Klf4",
+      "state": "Fcnb",
+      "n_cells": 4,
+      "fraction_within_group": 0.008
+    },
+    {
+      "group": "Klf4",
+      "state": "Vpreb1",
+      "n_cells": 2,
+      "fraction_within_group": 0.004
+    },
+    {
+      "group": "Klf4",
+      "state": "Prg2",
+      "n_cells": 2,
+      "fraction_within_group": 0.004
+    },
+    {
+      "group": "Klf4",
+      "state": "Pf4",
+      "n_cells": 1,
+      "fraction_within_group": 0.002
+    },
+    {
+      "group": "Klf4",
+      "state": "Ly86",
+      "n_cells": 1,
+      "fraction_within_group": 0.002
+    }
+  ],
+  "warnings": []
+}
