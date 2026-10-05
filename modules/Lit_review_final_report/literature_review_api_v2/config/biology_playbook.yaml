@@ -1,0 +1,137 @@
+version: "0.2.0"
+name: "JCAP biological consequence playbook"
+description: >-
+  Curated, auditable biological relationships used after liberal literature retrieval
+  to judge whether a paper measures the same biology, an immediate consequence, a more
+  distant mechanistic consequence, or only contextual association. This is deliberately
+  not a general-purpose ontology.
+
+relation_policy:
+  # These relation types may participate in a <=2-edge path used for DIRECT evidence,
+  # but DIRECT still also requires same/equivalent assay and primary experimental literature.
+  direct_relations:
+    - DIRECT_COMPONENT
+    - DIRECT_REGULATOR
+    - CATALYZES
+    - ACTIVATES
+    - INHIBITS
+    - UPSTREAM_OF
+    - DOWNSTREAM_OF
+    - CAUSES_PHENOTYPE
+
+  # These are biologically meaningful but too conditional/indirect to establish DIRECT
+  # evidence by themselves. They may participate in <=3-edge MECHANISTIC_SUPPORT paths.
+  mechanistic_only_relations:
+    - CONTRIBUTES_TO_PHENOTYPE
+    - MODULATES
+    - REQUIRED_FOR
+
+  # Retrieval/context only. These relations never create direct/mechanistic status alone.
+  context_only_relations:
+    - ASSOCIATED_WITH
+
+curation_rules:
+  retrieval_is_liberal: true
+  direct_max_edges: 2
+  mechanistic_max_edges: 3
+  notes:
+    - "Do not encode a statistical association as a causal relation."
+    - "Prefer the most local biological statement supported by evidence."
+    - "Do not encode 'increases cancer' when the demonstrated endpoint is only proliferation, survival, migration, or another cancer-relevant phenotype."
+    - "Expression/abundance changes do not automatically imply protein activity or pathway flux. Encode caveats when activity depends on substrate, cofactors, localization, inhibition, or rate-limiting control."
+    - "Use context fields when a relation is tissue-, lineage-, stimulus-, genotype-, or disease-dependent."
+    - "When uncertain, use ASSOCIATED_WITH or omit the edge until curated."
+
+edges:
+  # ---- Growth / cancer-relevant phenotypes ----
+  - source: "cell cycle activation"
+    relation: "CAUSES_PHENOTYPE"
+    target: "cell proliferation"
+    direction: "increase"
+    evidence_note: "Immediate functional consequence when cell-cycle progression is actually demonstrated."
+
+  - source: "cell growth"
+    relation: "CONTRIBUTES_TO_PHENOTYPE"
+    target: "tumor growth"
+    direction: "increase"
+    caveat: "Growth alone is not equivalent to cancer causation."
+
+  - source: "cell proliferation"
+    relation: "CONTRIBUTES_TO_PHENOTYPE"
+    target: "tumor growth"
+    direction: "increase"
+    caveat: "Proliferation is cancer-relevant but is not by itself proof of malignancy or oncogenic transformation."
+
+  - source: "apoptosis suppression"
+    relation: "CONTRIBUTES_TO_PHENOTYPE"
+    target: "cell survival"
+    direction: "increase"
+
+  - source: "cell survival"
+    relation: "CONTRIBUTES_TO_PHENOTYPE"
+    target: "tumor growth"
+    direction: "increase"
+    caveat: "Context and additional oncogenic changes matter."
+
+  - source: "extracellular matrix remodeling"
+    aliases:
+      - "ECM remodeling"
+    relation: "CONTRIBUTES_TO_PHENOTYPE"
+    target: "cell migration"
+    direction: "increase"
+    caveat: "ECM remodeling can either promote or restrain migration depending on matrix composition and context."
+
+  - source: "cell migration"
+    relation: "CONTRIBUTES_TO_PHENOTYPE"
+    target: "invasion"
+    direction: "increase"
+    caveat: "Migration is related to but not equivalent to tissue invasion or metastasis."
+
+  # ---- Immune / interferon example ----
+  - source: "type I interferon signaling"
+    aliases:
+      - "IFN-I signaling"
+      - "type 1 interferon signaling"
+    relation: "CAUSES_PHENOTYPE"
+    target: "antiviral transcriptional response"
+    direction: "increase"
+
+  - source: "interferon signaling"
+    relation: "CAUSES_PHENOTYPE"
+    target: "antiviral transcriptional response"
+    direction: "increase"
+    caveat: "The exact transcriptional program depends on interferon type, receptor state, cell type, and timing."
+
+  # ---- Generic enzyme reasoning templates ----
+  # These generic nodes let the classifier reason about a stated enzyme-dependent
+  # consequence without pretending that abundance always equals activity or flux.
+  - source: "enzyme abundance"
+    aliases:
+      - "enzyme expression"
+      - "enzyme level"
+    relation: "MODULATES"
+    target: "enzyme activity"
+    caveat: "Expression or abundance does not guarantee activity; substrate, cofactors, localization, post-translational regulation, and inhibition can be limiting."
+
+  - source: "enzyme activity"
+    relation: "CATALYZES"
+    target: "enzyme-dependent reaction"
+    direction: "increase"
+    caveat: "Reaction rate and pathway flux still depend on substrate/cofactor availability and rate-limiting control."
+
+  - source: "enzyme-dependent reaction"
+    relation: "DIRECT_COMPONENT"
+    target: "enzyme-dependent pathway"
+    direction: "increase"
+
+  # ---- Examples of intentionally weaker relationships ----
+  - source: "chronic inflammation"
+    relation: "ASSOCIATED_WITH"
+    target: "cancer"
+    caveat: "Association is context-dependent and does not establish that inflammation alone causes a specific cancer."
+
+  - source: "oxidative stress"
+    relation: "CONTRIBUTES_TO_PHENOTYPE"
+    target: "cellular damage"
+    direction: "increase"
+    caveat: "Magnitude, duration, antioxidant capacity, and cellular compartment matter."
