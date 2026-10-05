@@ -1,0 +1,65 @@
+R version 4.1.2 (2021-11-01)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Ubuntu 22.04.5 LTS
+
+Matrix products: default
+BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.10.0
+LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.10.0
+
+locale:
+ [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       
+ [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   
+ [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          
+[10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   
+
+attached base packages:
+[1] parallel  stats     graphics  grDevices utils     datasets  methods  
+[8] base     
+
+other attached packages:
+ [1] jsonlite_2.0.0       pheatmap_1.0.13      plotly_4.12.0       
+ [4] dplyr_1.2.1          umap_0.2.10.0        doParallel_1.0.17   
+ [7] iterators_1.0.14     foreach_1.5.2        pwr_1.3-0           
+[10] pROC_1.19.0.1        caret_7.0-1          lattice_0.20-45     
+[13] ggplot2_4.0.3        randomForest_4.7-1.2 gprofiler2_0.2.4    
+[16] enrichR_3.4          biomaRt_2.50.3       edgeR_3.36.0        
+[19] limma_3.50.3        
+
+loaded via a namespace (and not attached):
+  [1] rjson_0.2.23           class_7.3-20           XVector_0.34.0        
+  [4] proxy_0.4-29           listenv_1.0.0          farver_2.1.2          
+  [7] bit64_4.8.2            RSpectra_0.16-2        AnnotationDbi_1.56.2  
+ [10] prodlim_2026.03.11     lubridate_1.9.5        xml2_1.5.2            
+ [13] codetools_0.2-18       splines_4.1.2          cachem_1.1.0          
+ [16] knitr_1.51             dbplyr_2.1.1           png_0.1-9             
+ [19] compiler_4.1.2         httr_1.4.8             assertthat_0.2.1      
+ [22] Matrix_1.6-5           fastmap_1.2.0          lazyeval_0.2.3        
+ [25] cli_3.6.6              htmltools_0.5.9        prettyunits_1.2.0     
+ [28] tools_4.1.2            otel_0.2.0             gtable_0.3.6          
+ [31] glue_1.8.1             GenomeInfoDbData_1.2.7 reshape2_1.4.5        
+ [34] rappdirs_0.3.4         Rcpp_1.1.1-1.1         Biobase_2.54.0        
+ [37] vctrs_0.7.3            Biostrings_2.62.0      nlme_3.1-155          
+ [40] crosstalk_1.2.2        timeDate_4052.112      xfun_0.59             
+ [43] gower_1.0.2            stringr_1.6.0          globals_0.19.1        
+ [46] timechange_0.4.0       lifecycle_1.0.5        WriteXLS_6.8.0        
+ [49] XML_3.99-0.23          future_1.70.0          zlibbioc_1.40.0       
+ [52] MASS_7.3-55            scales_1.4.0           ipred_0.9-15          
+ [55] hms_1.1.4              RColorBrewer_1.1-3     yaml_2.3.12           
+ [58] curl_7.1.0             reticulate_1.46.0      memoise_2.0.1         
+ [61] rpart_4.1.16           stringi_1.8.7          RSQLite_3.53.2        
+ [64] S4Vectors_0.32.4       e1071_1.7-17           BiocGenerics_0.40.0   
+ [67] filelock_1.0.3         hardhat_1.4.3          lava_1.9.1            
+ [70] GenomeInfoDb_1.30.1    rlang_1.2.0            pkgconfig_2.0.3       
+ [73] bitops_1.0-9           evaluate_1.0.5         purrr_1.2.2           
+ [76] labeling_0.4.3         recipes_1.3.3          htmlwidgets_1.6.4     
+ [79] bit_4.6.0              tidyselect_1.2.1       parallelly_1.47.0     
+ [82] plyr_1.8.9             magrittr_2.0.5         R6_2.6.1              
+ [85] IRanges_2.28.0         generics_0.1.4         DBI_1.3.0             
+ [88] pillar_1.11.1          withr_3.0.3            survival_3.2-13       
+ [91] KEGGREST_1.34.0        RCurl_1.98-1.19        nnet_7.3-17           
+ [94] tibble_3.3.1           future.apply_1.20.2    crayon_1.5.3          
+ [97] BiocFileCache_2.2.1    rmarkdown_2.31         progress_1.2.3        
+[100] locfit_1.5-9.12        grid_4.1.2             data.table_1.18.4     
+[103] blob_1.3.0             ModelMetrics_1.2.2.2   S7_0.2.2              
+[106] digest_0.6.39          tidyr_1.3.2            openssl_2.4.2         
+[109] stats4_4.1.2           viridisLite_0.4.3      askpass_1.2.1         
