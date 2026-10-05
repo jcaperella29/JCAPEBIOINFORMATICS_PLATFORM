@@ -1,9 +1,0 @@
-{
-  "status": "complete",
-  "module": "CRISPR Mixscape",
-  "version": "0.2.0-stat-upgrade",
-  "files": ["cell_metadata_mixscape.csv", "enrichment_all.csv", "enrichment_down.csv", "enrichment_up.csv", "input_qc.csv", "ko_genes.csv", "mixscape_class_counts_by_replicate.csv", "mixscape_seurat.rds", "plots/mixscape_posterior_violin.png", "plots/umap_crispr.png", "plots/umap_phase.png", "plots/umap_replicate.png", "run_status.json", "run_summary.json", "statistical_notes.csv", "summary_stats.csv"],
-  "class_column": "mixscape_class",
-  "safe_neighbors": 20,
-  "de_mode_used": "pseudobulk"
-}
