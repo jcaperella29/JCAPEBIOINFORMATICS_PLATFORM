@@ -1,0 +1,13 @@
+{
+  "phenotype": "Dexamethasone response in human airway smooth muscle cells, with interest in glucocorticoid-responsive transcriptional programs, steroid-regulated gene expression, anti-inflammatory modulation, and airway smooth muscle biology.",
+  "organism": "human",
+  "assay": "bulk RNA-seq",
+  "tissue": "airway / lung",
+  "cell_type": "airway smooth muscle cells",
+  "perturbation": "dexamethasone treatment",
+  "timepoint": "18 hours",
+  "dataset": "airway",
+  "study_context": "Dexamethasone-treated versus untreated human airway smooth muscle cells",
+  "reference_group": "untrt",
+  "treatment_group": "trt"
+}
