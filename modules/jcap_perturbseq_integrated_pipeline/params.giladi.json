@@ -1,0 +1,17 @@
+{
+  "counts": "../sample_data/giladi_mixscape_subset/giladi_rna_counts.mtx",
+  "cells": "../sample_data/giladi_mixscape_subset/giladi_cells.tsv",
+  "genes": "../sample_data/giladi_mixscape_subset/giladi_genes.tsv",
+  "metadata": "../sample_data/giladi_mixscape_subset/giladi_metadata.csv",
+  "state_metadata": "../sample_data/giladi_mixscape_subset/giladi_metadata_with_lineage.csv",
+  "context_json": "data/context.json",
+  "targets": "CEBPA,KLF4,FLT3,FCGR3,CSF1R,IRF8",
+  "species": "mmusculus",
+  "nt_label": "CTRL",
+  "cell_state_url": "http://127.0.0.1:8007",
+  "state_column": "lineage_state",
+  "perturbation_column": "target",
+  "cell_id_column": "cell_id",
+  "annotation_mode": "provided",
+  "render_network": false
+}

@@ -1,0 +1,11 @@
+{
+  "phenotype": "CRISPR perturbation transcriptional response",
+  "organism": "mouse",
+  "assay": "Perturb-seq / scRNA-seq",
+  "tissue": "",
+  "cell_type": "",
+  "perturbation": "CRISPR perturbation",
+  "timepoint": "",
+  "dataset": "Giladi Perturb-seq",
+  "control_label": "CTRL"
+}
