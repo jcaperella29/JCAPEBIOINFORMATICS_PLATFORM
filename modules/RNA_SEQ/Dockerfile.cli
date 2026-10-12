@@ -1,0 +1,64 @@
+FROM bioconductor/bioconductor_docker:RELEASE_3_18
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV MAKEFLAGS="-j4"
+
+USER root
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    gfortran \
+    cmake \
+    pkg-config \
+    libcurl4-openssl-dev \
+    libssl-dev \
+    libxml2-dev \
+    libgit2-dev \
+    libxt-dev \
+    libpng-dev \
+    libjpeg-dev \
+    libfreetype6-dev \
+    libfontconfig1-dev \
+    libcairo2-dev \
+    libtiff5-dev \
+    libharfbuzz-dev \
+    libfribidi-dev \
+    libbz2-dev \
+    liblzma-dev \
+    libz-dev \
+    libncurses-dev \
+    libicu-dev \
+    libgsl-dev \
+    libglpk-dev \
+    libudunits2-dev \
+    pandoc \
+    curl \
+    wget \
+    python3 \
+    python3-pip \
+    python3-venv \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN R -e "install.packages(c( \
+  'plotly', 'pROC', 'pwr', 'ggplot2', 'caret', 'randomForest', \
+  'dplyr', 'foreach', 'doParallel', 'umap', 'enrichR', \
+  'gprofiler2', 'pheatmap', 'htmlwidgets' \
+), repos='https://cloud.r-project.org', Ncpus=4)"
+
+RUN R -e "BiocManager::install(c( \
+  'limma', 'edgeR', 'biomaRt' \
+), ask=FALSE, update=FALSE, dependencies=TRUE, Ncpus=4)"
+
+RUN R -e "library(limma); library(edgeR); library(biomaRt); \
+  library(plotly); library(pROC); library(pwr); library(ggplot2); \
+  library(caret); library(randomForest); library(dplyr); \
+  library(foreach); library(doParallel); library(umap); \
+  library(enrichR); library(gprofiler2); library(pheatmap); \
+  library(htmlwidgets); \
+  cat('RNA-seq CLI dependencies loaded successfully\n')"
+
+WORKDIR /work
+
+ENTRYPOINT ["Rscript"]
+CMD ["./CLI/rnaseq_cli.R", "--help"]
