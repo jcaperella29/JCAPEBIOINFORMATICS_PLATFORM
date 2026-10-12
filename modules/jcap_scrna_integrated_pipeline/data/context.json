@@ -1,0 +1,29 @@
+{
+  "dataset": "Kang18_8vs8",
+  "phenotype": "Interferon-beta stimulated versus untreated control response in CD14+ monocytes from the Kang 8-donor single-cell RNA-seq experiment.",
+  "organism": "Homo sapiens",
+  "species": "hsapiens",
+  "assay": "single-cell RNA-seq with donor-level pseudobulk differential expression",
+  "tissue": "peripheral blood mononuclear cells",
+  "cell_type": "CD14+ monocytes",
+  "perturbation": "interferon-beta stimulation versus untreated control",
+  "timepoint": "approximately 6 hours",
+  "condition_column": "stim",
+  "condition_a": "STIM",
+  "condition_b": "CTRL",
+  "celltype_column": "cell_type",
+  "target_celltype": "CD14+ Monocytes",
+  "sample_column": "orig.ident",
+  "pair_column": "donor_id",
+  "de_mode": "pseudobulk",
+  "de_scope": "target_celltype",
+  "pseudobulk_method": "limma_voom",
+  "study_context": "PBMC interferon-beta stimulation dataset",
+  "interpretation_notes": [
+    "Treat the donor-matched pseudobulk model as paired only when the DE output confirms pseudobulk_design=paired.",
+    "For pseudobulk DE, pct.1 and pct.2 are fractions of pseudobulk samples with nonzero counts, not cell-level expression fractions.",
+    "Condition-only setdiff output is not a formal condition-by-cell-type interaction test.",
+    "Network prioritization scores are prioritization metrics, not p-values.",
+    "Cross-module agreement from the same dataset is convergence, not independent replication."
+  ]
+}

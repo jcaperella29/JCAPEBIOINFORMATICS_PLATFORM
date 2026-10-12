@@ -1,0 +1,167 @@
+#!/usr/bin/env python3
+
+import argparse
+import io
+import json
+import shutil
+import time
+import zipfile
+from pathlib import Path
+
+import requests
+
+
+def main():
+    ap = argparse.ArgumentParser()
+
+    ap.add_argument("--api", required=True)
+    ap.add_argument("--counts", required=True)
+    ap.add_argument("--meta", required=True)
+
+    # Retained for compatibility with the existing Nextflow command.
+    ap.add_argument("--condition-col")
+    ap.add_argument("--celltype-col")
+    ap.add_argument("--annotation-col")
+    ap.add_argument("--sample-col")
+    ap.add_argument("--pair-col")
+    ap.add_argument("--de-scope")
+    ap.add_argument("--a")
+    ap.add_argument("--b")
+    ap.add_argument("--target-celltype")
+
+    ap.add_argument("--out", required=True)
+
+    args = ap.parse_args()
+
+    api = args.api.rstrip("/")
+    counts = Path(args.counts)
+    meta = Path(args.meta)
+    out = Path(args.out)
+
+    if out.exists():
+        shutil.rmtree(out)
+    out.mkdir(parents=True)
+
+    print("Submitting scRNA job...")
+
+    form = {
+        "condition_col": args.condition_col,
+        "celltype_col": args.celltype_col,
+        "annotation_col": args.annotation_col,
+        "sample_col": args.sample_col,
+        "condition_a": args.a,
+        "condition_b": args.b,
+        "target_celltype": args.target_celltype,
+        "de_mode": "cell",
+        "de_scope": args.de_scope,
+    }
+
+    form = {
+        k: v for k, v in form.items()
+        if v not in (None, "", "null", "None")
+    }
+
+    print("scRNA parameters:")
+    print(json.dumps(form, indent=2))
+
+    with counts.open("rb") as fc, meta.open("rb") as fm:
+        response = requests.post(
+            f"{api}/jobs",
+            files={
+                "counts_file": (counts.name, fc, "text/csv"),
+                "meta_file": (meta.name, fm, "text/csv"),
+            },
+            data=form,
+            timeout=3600,
+        )
+
+    if response.status_code != 202:
+        raise RuntimeError(
+            f"scRNA submission failed: HTTP {response.status_code}\n"
+            f"{response.text}"
+        )
+
+    submit = response.json()
+    job_id = submit["job_id"]
+
+    print(f"Submitted job: {job_id}")
+
+    status_path = out / "job_status.json"
+
+    while True:
+        r = requests.get(
+            f"{api}/jobs/{job_id}",
+            timeout=60,
+        )
+        r.raise_for_status()
+
+        status = r.json()
+
+        status_path.write_text(
+            json.dumps(status, indent=2) + "\n"
+        )
+
+        state = status["status"]
+        print(f"scRNA job status: {state}")
+
+        if state == "complete":
+            break
+
+        if state in {"failed", "deleted"}:
+            raise RuntimeError(
+                "scRNA job failed:\n" +
+                json.dumps(status, indent=2)
+            )
+
+        time.sleep(5)
+
+    download_url = status.get("download_url")
+
+    if download_url:
+        if download_url.startswith("/"):
+            url = api + download_url
+        elif download_url.startswith("http://") or download_url.startswith("https://"):
+            url = download_url
+        else:
+            url = f"{api}/{download_url.lstrip('/')}"
+    else:
+        url = f"{api}/jobs/{job_id}/download"
+
+    print(f"Downloading completed bundle from {url}")
+
+    r = requests.get(url, timeout=3600)
+    r.raise_for_status()
+
+    data = r.content
+
+    # Normal expected case: API returns a ZIP bundle.
+    bio = io.BytesIO(data)
+
+    if zipfile.is_zipfile(bio):
+        bio.seek(0)
+
+        with zipfile.ZipFile(bio) as zf:
+            zf.extractall(out)
+
+        print(f"Extracted scRNA bundle into {out}")
+    else:
+        # Preserve unexpected response for diagnosis rather than discarding it.
+        ctype = r.headers.get("content-type", "")
+        fallback = out / "download_response.bin"
+        fallback.write_bytes(data)
+
+        raise RuntimeError(
+            f"Download was not a ZIP bundle "
+            f"(content-type={ctype}). "
+            f"Saved response to {fallback}"
+        )
+
+    (out / "submission.json").write_text(
+        json.dumps(submit, indent=2) + "\n"
+    )
+
+    print(f"scRNA results ready: {out}")
+
+
+if __name__ == "__main__":
+    main()
